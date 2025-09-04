@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let score = 0;
     let timerInterval;
     let seconds = 0;
-    let timerStarted = false; // <-- NOVA VARIÁVEL AQUI
+    let timerStarted = false;
 
     function createCards() {
         const gameIcons = [...cardIcons, ...cardIcons];
@@ -57,13 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (lockBoard) return;
         if (this === firstCard) return;
 
-        // <-- LÓGICA DO CRONÔMETRO INICIA AQUI -->
         if (!timerStarted) {
             startTimer();
             timerStarted = true;
         }
-        // <-- FIM DA LÓGICA -->
-
+        
         this.classList.add('flip');
 
         if (!hasFlippedCard) {
@@ -119,7 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function startGame() {
         resetGame();
         createCards();
-        // REMOVIDO: startTimer() não é mais chamado aqui.
     }
 
     function resetGame() {
@@ -132,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resetBoard();
         victoryMusic.pause();
         victoryMusic.currentTime = 0;
-        timerStarted = false; // <-- RESETANDO A VARIÁVEL
+        timerStarted = false;
     }
 
     function startTimer() {
@@ -169,4 +166,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     startGame();
+
 });
